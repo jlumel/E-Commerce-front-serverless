@@ -41,6 +41,7 @@ const ItemCount = ({ onAdd, stock, initial }) => {
             console.log(`${count} items agregados`)
         } else {
             SetCount(0)
+
         }
     }
 
@@ -51,7 +52,7 @@ const ItemCount = ({ onAdd, stock, initial }) => {
                 <p>{count}</p>
                 <button onClick={sumar}>+</button>
             </div>
-            <button disabled={(!count)} onClick={onAdd}>Agregar</button>
+    <button disabled={(!count)} onClick={onAdd}>{actualStock > 0 ? 'Agregar' : 'Sin stock'} </button>
         </div>
     )
 }
