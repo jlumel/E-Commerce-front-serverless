@@ -1,11 +1,11 @@
 import React, { useState} from 'react';
 
-const ItemCount = ({onAdd, max, min }) => {
+const ItemCount = ({onAdd, stock, initial }) => {
 
-    const [count, setCount] = useState(min)
+    const [count, setCount] = useState(initial)
 
     const sumar = () => {
-        if (count < max) {
+        if (count < stock) {
 
             setCount(count + 1)
         }
@@ -25,7 +25,7 @@ const ItemCount = ({onAdd, max, min }) => {
                 <p>{count}</p>
                 <button onClick={sumar}>+</button>
             </div>
-    <button disabled={max < 1} onClick={()=> onAdd(count)} >{max > 0 ? 'Agregar' : 'Sin stock'} </button>
+    <button disabled={stock < 1} onClick={()=> onAdd(count)} >{stock > 0 ? 'Agregar' : 'Sin stock'} </button>
         </div>
     )
 }

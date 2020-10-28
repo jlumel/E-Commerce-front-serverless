@@ -35,7 +35,7 @@ const ItemListContainer = ({ title }) => {
     return (
         <>
             <h2 style={{ fontFamily: 'Roboto', marginLeft: '0.5vw' }}>{title}</h2>
-            <ItemCount onAdd={onAdd}  min={initial} max={actualStock} />
+            <ItemCount onAdd={onAdd}  initial={initial} stock={actualStock} />
         </>
     )
 
