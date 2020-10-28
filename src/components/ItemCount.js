@@ -1,45 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 
-const ItemCount = ({ onAdd, stock, initial }) => {
+const ItemCount = ({onAdd, max, min }) => {
 
-    const [actualStock, SetStock] = useState(stock)
-
-    initial = () => {
-        if (actualStock > 0) {
-            return 1
-        } else {
-            return 0
-        }
-    }
-
-    const [count, SetCount] = useState(initial)
-
-    useEffect(() => { console.log(`El stock actual es ${actualStock}`) }, [actualStock])
+    const [count, setCount] = useState(min)
 
     const sumar = () => {
-        if (count < actualStock) {
+        if (count < max) {
 
-            SetCount(count + 1)
+            setCount(count + 1)
         }
     }
 
     const restar = () => {
         if (count > 1) {
 
-            SetCount(count - 1)
-        }
-    }
-
-    onAdd = () => {
-        if (actualStock > 0) {
-            SetStock(actualStock - count)
-            if (actualStock - count < count) {
-                SetCount(actualStock - count)
-            }
-            console.log(`${count} items agregados`)
-        } else {
-            SetCount(0)
-
+            setCount(count - 1)
         }
     }
 
@@ -50,7 +25,7 @@ const ItemCount = ({ onAdd, stock, initial }) => {
                 <p>{count}</p>
                 <button onClick={sumar}>+</button>
             </div>
-    <button disabled={(!count)} onClick={onAdd}>{actualStock > 0 ? 'Agregar' : 'Sin stock'} </button>
+    <button disabled={max < 1} onClick={()=> onAdd(count)} >{max > 0 ? 'Agregar' : 'Sin stock'} </button>
         </div>
     )
 }

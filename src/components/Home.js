@@ -1,8 +1,11 @@
 import React from 'react';
 import ItemListContainer from './ItemListContainer'
 
-const Home = ({ title }) => {
-    let hora = new Date()
+const Home = () => {
+
+    const hora = new Date()
+
+    let title
 
     if (hora.getHours() > 6 && hora.getHours() < 12) {
         title = 'Buen dia!'
