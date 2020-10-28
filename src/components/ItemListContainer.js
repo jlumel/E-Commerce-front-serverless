@@ -17,15 +17,15 @@ const ItemListContainer = ({ title }) => {
         }
     }
 
-    const onAdd = (count) => {
+    const onAdd = (count, setCount) => {
         if (actualStock > 0) {
             setStock(actualStock - count)
-            // if (actualStock - count < count) {
-            //     setCount(actualStock - count)
-            // }
+            if (actualStock - count < count) {
+                setCount(actualStock - count)
+            }
             console.log(`${count} items agregados`)
-        // } else {
-        //     setCount(0)
+        } else {
+            setCount(0)
 
          }
     }
