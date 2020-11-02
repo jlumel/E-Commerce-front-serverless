@@ -1,0 +1,9 @@
+.itemCard {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5vw;
+}
+
+.itemCard h2 , .itemCard p {
+text-align: center;
+}

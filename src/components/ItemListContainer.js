@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import ItemCount from './ItemCount'
+import ItemList from './ItemList'
+import products from '../productos.json'
 
-//const itemTask = new Promise()//promise que devuelva items
 
 const ItemListContainer = ({ title }) => {
 
     const stock = 10 //hardcodeo el stock hasta que lo consumamos de una API
 
+    const [items, setItems] = useState(null)
+
     const [actualStock, setStock] = useState(stock)
+
+    const getItems = () => new Promise(res => {
+        setTimeout(() => {
+            res(products)
+        }, 2000)
+    })
 
     const initial = () => {
         if (actualStock > 0) {
@@ -27,15 +36,22 @@ const ItemListContainer = ({ title }) => {
         } else {
             setCount(0)
 
-         }
+        }
     }
+
+    useEffect(() => {
+        getItems().then(res => {
+            setItems(res)
+        })
+    },[])
 
     useEffect(() => { console.log(`El stock actual es ${actualStock}`) }, [actualStock])
 
     return (
         <>
-            <h2 style={{ fontFamily: 'Roboto', marginLeft: '0.5vw' }}>{title}</h2>
-            <ItemCount onAdd={onAdd}  initial={initial} stock={actualStock} />
+            <h2 style={{ fontFamily: 'Roboto', textAlign: 'center' }}>{title}</h2>
+            {items && <ItemList items={items} />}
+            <ItemCount onAdd={onAdd} initial={initial} stock={actualStock} />
         </>
     )
 

@@ -1,6 +1,7 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
+import './ItemCount.css'
 
-const ItemCount = ({onAdd, stock, initial }) => {
+const ItemCount = ({ onAdd, stock, initial }) => {
 
     const [count, setCount] = useState(initial)
 
@@ -19,13 +20,13 @@ const ItemCount = ({onAdd, stock, initial }) => {
     }
 
     return (
-        <div style={{ marginLeft: '1.5vw' }}>
-            <div style={{ display: 'flex', marginLeft: '0.2vw' }}>
-                <button onClick={restar}>-</button>
+        <div className={'addContainer'}>
+            <div className={'counterContainer'}>
+                <button className={'counterbtn'} onClick={restar}>-</button>
                 <p>{count}</p>
-                <button onClick={sumar}>+</button>
+                <button className={'counterbtn'} onClick={sumar}>+</button>
             </div>
-    <button disabled={stock < 1} onClick={()=> onAdd(count, setCount)} >{stock > 0 ? 'Agregar' : 'Sin stock'} </button>
+            <button className={'addbtn'} disabled={stock < 1} onClick={() => onAdd(count, setCount)} >{stock > 0 ? 'Agregar' : 'Sin stock'} </button>
         </div>
     )
 }

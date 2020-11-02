@@ -5,15 +5,17 @@ const Home = () => {
 
     const hora = new Date()
 
-    let title
+    let greeting
 
     if (hora.getHours() > 6 && hora.getHours() < 12) {
-        title = 'Buen dia!'
+        greeting = 'Buen dia'
     } else if (hora.getHours() > 12 && hora.getHours() < 20) {
-        title = 'Buenas tardes'
+        greeting = 'Buenas tardes'
     } else {
-        title = 'Buenas noches'
+        greeting = 'Buenas noches'
     }
+
+    const title = `${greeting}. Bienvenidxs a nuestra tienda virtual!`
     return (
         <main>
             <ItemListContainer title={title} />
