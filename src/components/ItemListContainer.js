@@ -49,7 +49,7 @@ const ItemListContainer = ({ title }) => {
 
     return (
         <>
-            <h2 style={{ fontFamily: 'Roboto', textAlign: 'center' }}>{title}</h2>
+            <h2 style={{ fontFamily: 'Roboto', textAlign: 'center', marginBottom: '3vw' }}>{title}</h2>
             {items && <ItemList items={items} />}
             <ItemCount onAdd={onAdd} initial={initial} stock={actualStock} />
         </>

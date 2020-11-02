@@ -11,7 +11,7 @@ const Item = ({ item }) => {
         <div className={'itemCard'}>
 
             <h2>{item.nombre}</h2>
-            <img src={item.src} alt=""/>
+            <img src={item.img} alt=""/>
             <p>${item.precio}</p>
 
         </div>
