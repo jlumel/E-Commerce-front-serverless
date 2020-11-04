@@ -1,19 +1,20 @@
 import React from 'react'
 import './Item.css'
+import ItemCount from './ItemCount'
 
 
 
-const Item = ({ item }) => {
-
-    console.log({ item })
+const Item = ({ item, onAdd, stock, initial }) => {
 
     return (
         <div className={'itemCard'}>
 
             <h2>{item.nombre}</h2>
-            <img src={item.img} alt=""/>
+            <div className={'itemImg'}><img src={item.img} alt=""/></div>
+            <button className={'verMas'}>Ver +</button>
             <p>${item.precio}</p>
-
+            <ItemCount onAdd={onAdd} initial={initial} stock={stock} />
+            
         </div>
     )
 }

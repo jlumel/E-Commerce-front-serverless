@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import ItemList from './ItemList'
-import ItemDetailContainer from './ItemDetailContainer'
-import products from '../productos.json'
+import ItemDetail from './ItemDetail'
 
-
-const ItemListContainer = ({ title }) => {
+const ItemDetailContainer = ({items}) => {
 
     const stock = 10
 
-    const [items, setItems] = useState(null)
+    const [item, setItem] = useState(null)
 
     const [actualStock, setStock] = useState(stock)
 
-    const getItems = () => new Promise(res => {
+    const getItem = () => new Promise(res => {
         setTimeout(() => {
-            res(products)
+            console.log(items)
+            res(items)
         }, 2000)
     })
 
@@ -40,8 +38,8 @@ const ItemListContainer = ({ title }) => {
     }
 
     useEffect(() => {
-        getItems().then(res => {
-            setItems(res)
+        getItem().then(res => {
+            setItem(res.filter(product => product.id === 2))
         })
     },[])
 
@@ -49,13 +47,11 @@ const ItemListContainer = ({ title }) => {
 
     return (
         <>
-            <h2 style={{ fontFamily: 'Roboto', textAlign: 'center', marginBottom: '3vw' }}>{title}</h2>
-            {items && <ItemList items={items} onAdd={onAdd} initial={initial} stock={actualStock} />}
-            {items && <ItemDetailContainer items={items}/>}
+            {item && <ItemDetail item={item} onAdd={onAdd} initial={initial} stock={actualStock} />}
             
         </>
     )
 
 }
 
-export default ItemListContainer
+export default ItemDetailContainer

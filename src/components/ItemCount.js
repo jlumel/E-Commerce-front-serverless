@@ -22,9 +22,9 @@ const ItemCount = ({ onAdd, stock, initial }) => {
     return (
         <div className={'addContainer'}>
             <div className={'counterContainer'}>
-                <button className={'counterbtn'} onClick={restar}>-</button>
+                <button className={'counterbtn'} onClick={restar}> - </button>
                 <p>{count}</p>
-                <button className={'counterbtn'} onClick={sumar}>+</button>
+                <button className={'counterbtn'} onClick={sumar}> + </button>
             </div>
             <button className={'addbtn'} disabled={stock < 1} onClick={() => onAdd(count, setCount)} >{stock > 0 ? 'Agregar' : 'Sin stock'} </button>
         </div>

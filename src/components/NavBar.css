@@ -17,10 +17,11 @@ nav .menu {
     margin: auto;
 }
 
-nav p {
+.categories {
     color: white;
     padding-left: 1.5vw;
-    cursor: pointer;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 0.9vw;
+    text-decoration: none;
+    
 }

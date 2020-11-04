@@ -1,0 +1,31 @@
+.detailContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.detailText {
+    margin: auto 1.5vw auto 1.5vw;
+    width: 35%;
+}
+
+.itemDetailCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.itemDetailCard h2, .itemDetailCard p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1vw;
+    text-align: center;
+    width: 1.5vw;
+}
+
+.itemDetailImg {
+    width: 10vw;
+    height: 10vw;
+    margin: auto;
+}
+
+.itemDetailCard img {
+    width: 6vw;
+}
