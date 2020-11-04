@@ -5,17 +5,25 @@
 
 .detailText {
     margin: auto 1.5vw auto 1.5vw;
-    width: 35%;
+    width: 20vw;
 }
 
 .itemDetailCard {
     display: flex;
     flex-direction: column;
+    width: 20vw;
 }
 
-.itemDetailCard h2, .itemDetailCard p {
+.itemDetailCard h2 {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1vw;
+    text-align: center;
+    width: 15vw;
+}
+
+.itemDetailCard p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 0.8vw;
     text-align: center;
     width: 1.5vw;
 }
@@ -27,5 +35,5 @@
 }
 
 .itemDetailCard img {
-    width: 6vw;
+    width: 15vw;
 }

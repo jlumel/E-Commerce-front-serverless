@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail'
 
-const ItemDetailContainer = ({items}) => {
+const ItemDetailContainer = ({ items }) => {
 
     const stock = 10
 
@@ -39,16 +39,20 @@ const ItemDetailContainer = ({items}) => {
 
     useEffect(() => {
         getItem().then(res => {
-            setItem(res.filter(product => product.id === 2))
+            res.forEach((product) => {
+                if (product.id === 2) {
+                    setItem(product)
+                }
+            })
         })
-    },[])
+    }, [])
 
     useEffect(() => { console.log(`El stock actual es ${actualStock}`) }, [actualStock])
 
     return (
         <>
             {item && <ItemDetail item={item} onAdd={onAdd} initial={initial} stock={actualStock} />}
-            
+
         </>
     )
 
