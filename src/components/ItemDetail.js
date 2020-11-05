@@ -13,7 +13,7 @@ const ItemDetail = ({ item, onAdd, initial, stock }) => {
 
                 <h2>{item.nombre}</h2>
                 <div className={'itemDetailImg'}><img src={item.img} alt="" /></div>
-                <p>${item.precio}</p>
+                <p className={'detailPrecio'}>${item.precio}</p>
                 <ItemCount onAdd={onAdd} initial={initial} stock={stock} />
 
             </div>
