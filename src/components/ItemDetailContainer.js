@@ -38,6 +38,7 @@ const ItemDetailContainer = ({ items }) => {
     }
 
     useEffect(() => {
+        
         getItem().then(res => {
             res.forEach((product) => {
                 if (product.id === 2) {
@@ -45,7 +46,7 @@ const ItemDetailContainer = ({ items }) => {
                 }
             })
         })
-    }, [])
+    },[])
 
     useEffect(() => { console.log(`El stock actual es ${actualStock}`) }, [actualStock])
 
