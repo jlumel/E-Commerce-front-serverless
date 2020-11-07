@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
+import items from '../productos.json'
 
-const ItemDetailContainer = ({ items }) => {
-
-    const stock = 10
+const ItemDetailContainer = () => {
 
     const [item, setItem] = useState(null)
 
-    const [actualStock, setStock] = useState(stock)
+    const [actualStock, setStock] = useState(0)
 
-    const getItem = () => new Promise(res => {
+    const [initial, setInitial] = useState(0)
+
+    const { id } = useParams()
+
+    const getItem = (id) => new Promise(res => {
         setTimeout(() => {
-            console.log(items)
-            res(items)
+            res(items.filter(item => item.id === Number(id))[0])
         }, 2000)
     })
-
-    const initial = () => {
-        if (actualStock > 0) {
-            return 1
-        } else {
-            return 0
-        }
-    }
 
     const onAdd = (count, setCount) => {
         if (actualStock > 0) {
@@ -33,27 +28,29 @@ const ItemDetailContainer = ({ items }) => {
             console.log(`${count} items agregados`)
         } else {
             setCount(0)
-
         }
     }
 
     useEffect(() => {
-        
-        getItem().then(res => {
-            res.forEach((product) => {
-                if (product.id === 2) {
-                    setItem(product)
-                }
-            })
-        })
-    },[])
+        getItem(id).then(res => {
+            setInitial(1)
+            setItem(res)
+            setStock(res.stock)
+            if (res.stock > 0) {
+                setInitial(1)
+            }
+        }
+        )
+    }, [id])
 
-    useEffect(() => { console.log(`El stock actual es ${actualStock}`) }, [actualStock])
+    useEffect(() => {
+        actualStock ? console.log(`El stock actual es ${actualStock}`) : console.log('Loading')
+    }, [actualStock])
 
     return (
         <>
-            {item && <ItemDetail item={item} onAdd={onAdd} initial={initial} stock={actualStock} />}
-
+            {item && initial && actualStock && <ItemDetail item={item} onAdd={onAdd} initial={initial} stock={actualStock} />}
+            {item && !actualStock && <ItemDetail item={item} onAdd={onAdd} initial={0} stock={actualStock} />}
         </>
     )
 

@@ -2,7 +2,9 @@ import React from 'react';
 import './App.css'
 import Home from './components/Home';
 import NavBar from './components/NavBar'
+import Cart from './components/Cart'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
   return (
@@ -12,8 +14,11 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/item/:id">
-
+        <Route exact path="/item/:id">
+          <ItemDetailContainer />
+        </Route>
+        <Route exact path="/cart">
+          <Cart />
         </Route>
       </Switch>
     </BrowserRouter>

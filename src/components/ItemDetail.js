@@ -3,7 +3,7 @@ import ItemCount from './ItemCount'
 import './ItemDetail.css'
 
 const ItemDetail = ({ item, onAdd, initial, stock }) => {
-    console.log(item)
+
     return (
         <div className={'detailContainer'}>
             <div className={'detailText'}>

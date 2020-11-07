@@ -1,19 +1,18 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './Item.css'
-import ItemCount from './ItemCount'
 
 
 
-const Item = ({ item, onAdd, stock, initial }) => {
+const Item = ({ item }) => {
 
     return (
         <div className={'itemCard'}>
 
             <h2>{item.nombre}</h2>
             <div className={'itemImg'}><img src={item.img} alt=""/></div>
-            <button className={'verMas'}>Ver +</button>
+            <Link to={`/item/${item.id}`} style={{textAlign: 'center'}}><button className={'verMas'}>Ver +</button></Link>
             <p>${item.precio}</p>
-            <ItemCount onAdd={onAdd} initial={initial} stock={stock} />
             
         </div>
     )
