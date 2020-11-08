@@ -34,3 +34,16 @@
 .itemDetailCard img {
     width: 15vw;
 }
+
+.finCompra {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 0.8vw;
+    width: 8vw;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    padding: 0.3vw;
+    background-color: teal;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,8 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
 import './ItemDetail.css'
 
-const ItemDetail = ({ item, onAdd, initial, stock }) => {
+const ItemDetail = ({ item }) => {
+
+    const [agregado, setAgregado] = useState(false)
+
+    const onAdd = (count) => {
+        if (item.stock > 0) {
+            setAgregado(true)
+            console.log(`Cantidad agregada: ${count}`)
+        }
+    }
 
     return (
         <div className={'detailContainer'}>
@@ -14,7 +24,8 @@ const ItemDetail = ({ item, onAdd, initial, stock }) => {
                 <h2>{item.nombre}</h2>
                 <div className={'itemDetailImg'}><img src={item.img} alt="" /></div>
                 <p className={'detailPrecio'}>${item.precio}</p>
-                <ItemCount onAdd={onAdd} initial={initial} stock={stock} />
+                {!agregado && <ItemCount onAdd={onAdd}  initial={item.stock ? 1 : 0} stock={item.stock} />}
+                {agregado && <Link style={{textAlign: 'center'}} to="/cart"><button className={'finCompra'}>Terminá tu compra</button></Link>}
 
             </div>
 
