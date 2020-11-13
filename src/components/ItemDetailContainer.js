@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
 
     const getItem = (id) => new Promise(res => {
         setTimeout(() => {
-            res(items.filter(item => item.id === Number(id))[0])
+            res(items.find(item => item.id === Number(id)))
         }, 2000)
     })
     

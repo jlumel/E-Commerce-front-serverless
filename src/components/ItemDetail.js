@@ -1,18 +1,18 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
+import { useCartContext } from '../context/cartContext'
 import './ItemDetail.css'
+import { useEffect } from 'react'
 
 const ItemDetail = ({ item }) => {
 
-    const [agregado, setAgregado] = useState(false)
 
-    const onAdd = (count) => {
-        if (item.stock > 0) {
-            setAgregado(true)
-            console.log(`Cantidad agregada: ${count}`)
-        }
-    }
+    const { add, agregado, setAgregado } = useCartContext()
+
+    useEffect(()=>{
+        setAgregado(false)
+    },[setAgregado])
 
     return (
         <div className={'detailContainer'}>
@@ -24,8 +24,8 @@ const ItemDetail = ({ item }) => {
                 <h2>{item.nombre}</h2>
                 <div className={'itemDetailImg'}><img src={item.img} alt="" /></div>
                 <p className={'detailPrecio'}>${item.precio}</p>
-                {!agregado && <ItemCount onAdd={onAdd}  initial={item.stock ? 1 : 0} stock={item.stock} />}
-                {agregado && <Link style={{textAlign: 'center'}} to="/cart"><button className={'finCompra'}>Terminá tu compra</button></Link>}
+                {!agregado && <ItemCount item={item} onAdd={add} initial={item.stock ? 1 : 0} stock={item.stock} />}
+                {agregado && <Link style={{ textAlign: 'center' }} to="/cart"><button className={'finCompra'}>Terminá tu compra</button></Link>}
 
             </div>
 
