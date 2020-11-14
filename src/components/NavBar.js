@@ -1,9 +1,19 @@
 import React from 'react';
 import './NavBar.css'
 import CartWidget from './CartWidget'
-import {Link, NavLink} from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import { useCartContext } from '../context/cartContext'
 
 const NavBar = () => {
+
+    const { cart } = useCartContext()
+
+    const disableLink = (event) => {
+        if (!cart.length) {
+            event.preventDefault()
+        }
+
+    }
 
     return (
         <nav>
@@ -16,8 +26,8 @@ const NavBar = () => {
                 <NavLink activeClassName="active" to="/cervezasartesanales" className={'categories'}>Cervezas Artesanales</NavLink>
                 <NavLink activeClassName="active" to="/vinos" className={'categories'}>Vinos</NavLink>
             </div>
-            <Link to="/cart">
-            <CartWidget />
+            <Link onClick={(event) => disableLink(event) } style={{ cursor: 'default' }} to="/cart">
+                <CartWidget />
             </Link>
         </nav>
     )
