@@ -8,14 +8,16 @@ const CartProvider = ({ children, defaultCart }) => {
 
     const [cart, setCart] = useState(defaultCart)
 
+    const [totalQuantity, setTotalQuantity] = useState(0)
+
     const [agregado, setAgregado] = useState(false)
 
     const add = (item, quantity) => {
 
         if (item.stock > 0 && !cart.find(product => product.item.nombre === item.nombre)) {
             setCart([...cart, { item, quantity }])
+            setTotalQuantity(totalQuantity + quantity)
             setAgregado(true)
-            console.log(`Item agregado: ${item.nombre} - Cantidad: ${quantity}`)
         } else if (item.stock > 0) {
             cart.forEach(product => {
                 if (product.item.nombre === item.nombre) {
@@ -23,19 +25,22 @@ const CartProvider = ({ children, defaultCart }) => {
                 }
             })
             setCart(cart)
+            setTotalQuantity(totalQuantity + quantity)
             setAgregado(true)
         }
     }
 
     const remove = id => {
-        setCart(cart.filter(item => item.id !== Number(id)))
+        setCart(cart.filter(producto => producto.item.id !== id))
+        setTotalQuantity(totalQuantity - cart.find(producto=> producto.item.id === id).quantity)
     }
 
     const clear = () => {
         setCart([])
+        setTotalQuantity(0)
     }
 
-    return <CartContext.Provider value={{ cart, agregado, setAgregado, add, remove, clear }}>
+    return <CartContext.Provider value={{ cart, totalQuantity, agregado, setAgregado, add, remove, clear }}>
 
         {children}
 

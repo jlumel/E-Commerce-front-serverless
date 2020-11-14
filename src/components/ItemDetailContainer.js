@@ -10,9 +10,9 @@ const ItemDetailContainer = () => {
     const { id } = useParams()
 
     const getItem = (id) => new Promise(res => {
-        setTimeout(() => {
+       
             res(items.find(item => item.id === Number(id)))
-        }, 2000)
+        
     })
     
     useEffect(() => {

@@ -7,7 +7,7 @@ const NavBar = () => {
 
     return (
         <nav>
-            <Link className={'title'} to="/"><h1>Tienda Natural</h1></Link>
+            <Link className={'nombre'} to="/"><h1>Tienda Natural</h1></Link>
             <div className="menu">
                 <NavLink activeClassName="active" to="/harinasyfideos" className={'categories'}>Harinas y Fideos</NavLink>
                 <NavLink activeClassName="active" to="/papasypure" className={'categories'}>Papas y Puré deshidratado</NavLink>

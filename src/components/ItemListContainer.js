@@ -8,9 +8,9 @@ const ItemListContainer = ({ title }) => {
     const [items, setItems] = useState(null)
 
     const getItems = () => new Promise(res => {
-        setTimeout(() => {
+     
             res(products)
-        }, 2000)
+   
     })
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const ItemListContainer = ({ title }) => {
 
     return (
         <>
-            <h2 style={{ fontFamily: 'Roboto', textAlign: 'center', marginBottom: '3vw' }}>{title}</h2>
+            <h2 className={'title'}>{title}</h2>
             {items && <ItemList items={items} />}
             
         </>

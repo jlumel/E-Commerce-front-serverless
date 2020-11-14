@@ -35,3 +35,7 @@
     background: none;
     cursor: pointer;
 }
+
+.verMas:hover {
+    background-color: grey;
+}

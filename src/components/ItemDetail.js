@@ -25,7 +25,11 @@ const ItemDetail = ({ item }) => {
                 <div className={'itemDetailImg'}><img src={item.img} alt="" /></div>
                 <p className={'detailPrecio'}>${item.precio}</p>
                 {!agregado && <ItemCount item={item} onAdd={add} initial={item.stock ? 1 : 0} stock={item.stock} />}
-                {agregado && <Link style={{ textAlign: 'center' }} to="/cart"><button className={'finCompra'}>Terminá tu compra</button></Link>}
+                {agregado && <><Link style={{ textAlign: 'center' }} to="/cart"><button className={'finCompra'}>Terminá tu compra</button></Link>
+                <Link style={{ textAlign: 'center' }} to="/"><button className={'seguirCompra'}>Seguir comprando</button></Link>
+                </>
+                
+                }
 
             </div>
 
