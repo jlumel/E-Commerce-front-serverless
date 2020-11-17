@@ -1,8 +1,0 @@
-[
-    { "id": 1, "nombre": "Fideos de harina de maíz", "img": "/img/fideos_harina_maiz.jpg", "precio": 170, "stock": 10 },
-    { "id": 2, "nombre": "Puré deshidratado de papa andina morada", "img": "/img/pure_deshidratado.jpg", "precio": 145, "stock": 10 },
-    { "id": 3, "nombre": "Girgolas en escabeche", "img": "/img/girgolas_escabeche.jpg", "precio": 310, "stock": 10 },
-    { "id": 4, "nombre": "Dulce de Arándano", "img": "/img/dulce_arandano.jpg", "precio": 320, "stock": 10 },
-    { "id": 5, "nombre": "Cerveza Atlántico Sur Pale Ale", "img": "/img/cerveza_pale_ale.jpg", "precio": 140, "stock": 10 },
-    { "id": 6, "nombre": "Vino Santa Florentina Reserva Malbec", "img": "/img/vino_santa_florentina.jpg", "precio": 270, "stock": 10 }
-]

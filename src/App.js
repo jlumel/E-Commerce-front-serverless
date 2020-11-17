@@ -6,24 +6,28 @@ import Cart from './components/Cart'
 import CartProvider from './context/cartContext'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import ItemDetailContainer from './components/ItemDetailContainer';
+import ItemListContainer from './components/ItemListContainer';
 
 function App() {
   return (
     <CartProvider defaultCart={[]}>
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/item/:id">
-          <ItemDetailContainer />
-        </Route>
-        <Route exact path="/cart">
-          <Cart />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+      <BrowserRouter>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/category/:category">
+            <ItemListContainer />
+          </Route>
+          <Route exact path="/item/:id">
+            <ItemDetailContainer />
+          </Route>
+          <Route exact path="/cart">
+            <Cart />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </CartProvider>
   );
 }

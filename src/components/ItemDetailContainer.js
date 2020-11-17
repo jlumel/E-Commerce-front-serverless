@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
-import items from '../productos.json'
+import {getFirestore} from './firebase/index'
 
 const ItemDetailContainer = () => {
 
     const [item, setItem] = useState(null)
 
     const { id } = useParams()
-
-    const getItem = (id) => new Promise(res => {
-       
-            res(items.find(item => item.id === Number(id)))
-        
-    })
     
     useEffect(() => {
-        getItem(id).then(res => {
-            setItem(res)
-        }
-        )
+        
+        const db = getFirestore()
+        const itemCollection = db.collection('items').where('__name__', '==', id)
+
+        itemCollection.get().then((querySnapshot)=> {
+            
+            if (querySnapshot.size === 0) {
+                console.log('No results')
+            }
+            setItem(querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))[0])
+        })
+       
     }, [id])
 
     return (
