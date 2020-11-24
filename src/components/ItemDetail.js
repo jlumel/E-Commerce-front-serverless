@@ -10,14 +10,14 @@ const ItemDetail = ({ item }) => {
 
     const { add, agregado, setAgregado } = useCartContext()
 
-    useEffect(()=>{
+    useEffect(() => {
         setAgregado(false)
-    },[setAgregado])
+    }, [setAgregado])
 
     return (
         <div className={'detailContainer'}>
             <div className={'detailText'}>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo exercitationem consectetur natus assumenda sunt repellendus mollitia, quidem minus ad, corrupti ipsa ipsum vel suscipit aliquam beatae dolores rerum, molestias cupiditate?</p>
+                <p>{item.description}</p>
             </div>
             <div className={'itemDetailCard'}>
 
@@ -26,9 +26,9 @@ const ItemDetail = ({ item }) => {
                 <p className={'detailPrecio'}>${item.precio}</p>
                 {!agregado && <ItemCount item={item} onAdd={add} initial={item.stock ? 1 : 0} stock={item.stock} />}
                 {agregado && <><Link style={{ textAlign: 'center' }} to="/cart"><button className={'finCompra'}>Terminá tu compra</button></Link>
-                <Link style={{ textAlign: 'center' }} to="/"><button className={'seguirCompra'}>Seguir comprando</button></Link>
+                    <Link style={{ textAlign: 'center' }} to="/"><button className={'seguirCompra'}>Seguir comprando</button></Link>
                 </>
-                
+
                 }
 
             </div>
