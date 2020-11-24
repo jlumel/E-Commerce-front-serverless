@@ -1,0 +1,42 @@
+.orderForm {
+    margin: 2vw auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.orderForm input {
+    margin: 0.2vw;
+    padding: 0.4vw;
+}
+
+.finishOrder {
+    display: flex;
+    width: 45vw;
+    height: 8vw;
+    margin: 1vw auto;
+    background-color:springgreen;
+    border-radius: 2vw;
+}
+
+.finishOrder p {
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.5vw;
+    margin: auto;
+}
+
+.errorOrder {
+    display: flex;
+    width: 35vw;
+    height: 6vw;
+    margin: 1vw auto;
+    background-color:firebrick;
+    border-radius: 2vw;
+}
+
+.errorOrder p {
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2vw;
+    margin: auto;
+}

@@ -44,7 +44,7 @@ width: 21vw;
 }
 
 #itemCantidad {
-    width: 16vw;
+    width: 21vw;
 }
 
 .btnEliminar {
@@ -65,7 +65,7 @@ width: 21vw;
     font-size: 2vw;
     font-weight: bold;
     border-top: solid black 1px;
-    margin: 0.5vw auto;
+    margin: 1vw auto;
 }
 
 .btnComprar {
@@ -79,7 +79,7 @@ width: 21vw;
     color: white;
     padding: 0.5vw;
     cursor: pointer;
-    margin: 1vw auto;
+    margin: 1.5vw auto;
 }
 
 .vaciarCarrito {

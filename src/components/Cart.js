@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
+import CartItems from './CartItems'
+import Order from './Order'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../context/cartContext'
 import './Cart.css'
 
 const Cart = () => {
 
-    const { remove, clear, cart } = useCartContext()
+    const { clear, cart } = useCartContext()
 
     const [total, setTotal] = useState(0)
+
+    const [order, setOrder] = useState(false)
 
     const getTotal = () => {
         let suma = 0
@@ -17,18 +21,6 @@ const Cart = () => {
         });
     }
 
-    const items = cart.length ? cart.map(producto => 
-    <>
-    <li className={'itemCart'} key={producto.item.id}>
-        <img src={producto.item.img} alt={producto.item.name}></img>
-        <p id={'itemNombre'}>{`${producto.item.nombre}`}</p>
-        <p id={'itemCantidad'}>{`Cantidad: ${producto.quantity}`}</p>
-        <p>{`Subtotal: $${producto.quantity * producto.item.precio}`}</p>
-    <button className={'btnEliminar'} onClick={() => remove(producto.item.id)}>Eliminar</button>
-    </li>
-    </>) 
-    : null
-
     useEffect(() => {
         getTotal()
     })
@@ -36,19 +28,20 @@ const Cart = () => {
     return (
         <>
             <h2 className={'title'}>Tu Carrito</h2>
-            {items &&
+            {cart.length > 0 &&
                 <div className={'carritoContainer'}>
 
                     <ul className={'listCarrito'}>
-                        {items}
+                        <CartItems />
                     </ul>
-                    <p className={'cartTotal'}>Total: ${total}</p>
-                    <button className={'btnComprar'}>Finalizar Compra</button>
-                    <Link style={{ textAlign: 'center' }} to="/"><button className={'seguirCompra'}>Seguir comprando</button></Link>
                     <button onClick={() => clear()} className={'vaciarCarrito'}>Vaciar Carrito</button>
+                    <p className={'cartTotal'}>Total: ${total}</p>
+                    <Link style={{ textAlign: 'center' }} to="/"><button className={'seguirCompra'}>Seguir comprando</button></Link>
+                    {!order && <button onClick={()=>{setOrder(true)}} className={'btnComprar'}>Finalizar Compra</button>}
+                    {order && <Order total={total}/>}
                 </div>
             }
-            {!items &&
+            {!cart.length &&
                 <div className={'carritoContainer'}>
                     <div className={'listCarrito'}>
                         <p className={'carritoVacio'}>No hay productos</p>

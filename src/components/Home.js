@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import ItemListContainer from './ItemListContainer'
 
 const Home = () => {
@@ -16,11 +16,9 @@ const Home = () => {
     }
 
     const title = `${greeting}. Bienvenidxs a nuestra tienda virtual!`
-    return (
-        <main>
-            <ItemListContainer title={title} />
-        </main>
 
+    return (
+        <ItemListContainer title={title} />
     )
 }
 

@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react'
+import { useEffect } from 'react'
 
 export const CartContext = React.createContext([])
 
 export const useCartContext = () => useContext(CartContext)
 
-const CartProvider = ({ children, defaultCart }) => {
+const CartProvider = ({ children, defaultCart, defaultQuantity }) => {
 
     const [cart, setCart] = useState(defaultCart)
 
-    const [totalQuantity, setTotalQuantity] = useState(0)
+    const [totalQuantity, setTotalQuantity] = useState(defaultQuantity)
 
     const [agregado, setAgregado] = useState(false)
 
@@ -18,6 +19,7 @@ const CartProvider = ({ children, defaultCart }) => {
             setCart([...cart, { item, quantity }])
             setTotalQuantity(totalQuantity + quantity)
             setAgregado(true)
+            
         } else if (item.stock > 0) {
             cart.forEach(product => {
                 if (product.item.nombre === item.nombre) {
@@ -39,6 +41,10 @@ const CartProvider = ({ children, defaultCart }) => {
         setCart([])
         setTotalQuantity(0)
     }
+
+    useEffect(()=>{
+        localStorage.setItem('cart', JSON.stringify(cart))
+    },[cart, totalQuantity])
 
     return <CartContext.Provider value={{ cart, totalQuantity, agregado, setAgregado, add, remove, clear }}>
 
