@@ -42,11 +42,19 @@ const CartProvider = ({ children, defaultCart, defaultQuantity }) => {
         setTotalQuantity(0)
     }
 
+    const getTotal = () => {
+        let suma = 0
+        cart.forEach(producto => {
+            suma += producto.quantity * producto.item.precio
+        });
+        return suma
+    }
+
     useEffect(()=>{
         localStorage.setItem('cart', JSON.stringify(cart))
     },[cart, totalQuantity])
 
-    return <CartContext.Provider value={{ cart, totalQuantity, agregado, setAgregado, add, remove, clear }}>
+    return <CartContext.Provider value={{ cart, totalQuantity, agregado, setAgregado, add, remove, clear, getTotal }}>
 
         {children}
 
