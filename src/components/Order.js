@@ -26,8 +26,7 @@ const Order = () => {
         let email = document.querySelector('#email').value
         if (nombre.length && apellido.length && telefono.length && !isNaN(telefono) && email.length > 6 && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
             setUserInfo({
-                nombre: nombre,
-                apellido: apellido,
+                nombre: `${nombre} ${apellido}`,
                 telefono: telefono,
                 email: email
             })
