@@ -11,7 +11,7 @@ const CartItems = () => {
             {
                 cart.length && cart.map(producto =>
                     <li className={'itemCart'} key={producto.item.id}>
-                        <img src={producto.item.img} alt={producto.item.name}></img>
+                        <img src={`img/${producto.item.img}`} alt={producto.item.name}></img>
                         <p id={'itemNombre'}>{`${producto.item.nombre}`}</p>
                         <p id={'itemCantidad'}>{`Cantidad: ${producto.quantity}`}</p>
                         <p>{`Subtotal: $${producto.quantity * producto.item.precio}`}</p>
