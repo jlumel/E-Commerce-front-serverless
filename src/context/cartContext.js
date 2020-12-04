@@ -43,11 +43,7 @@ const CartProvider = ({ children, defaultCart, defaultQuantity }) => {
     }
 
     const getTotal = () => {
-        let suma = 0
-        cart.forEach(producto => {
-            suma += producto.quantity * producto.item.precio
-        });
-        return suma
+        return cart.reduce((accumulator,producto) => accumulator + producto.quantity * producto.item.precio,0)
     }
 
     useEffect(()=>{

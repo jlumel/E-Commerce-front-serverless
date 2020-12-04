@@ -24,7 +24,7 @@ function App() {
   }
 
   return (
-    <CartProvider defaultQuantity={localStorage.getItem('cart') ? getLocalStorage() : 0} defaultCart={localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []}>
+    <CartProvider defaultQuantity={getLocalStorage()} defaultCart={localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []}>
       <BrowserRouter>
         <NavBar />
         <Switch>

@@ -24,7 +24,7 @@ const Order = () => {
         let apellido = document.querySelector('#apellido').value
         let telefono = document.querySelector('#tel').value
         let email = document.querySelector('#email').value
-        if (nombre.length && apellido.length && telefono.length && !isNaN(telefono) && email.length > 6 && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+        if (nombre.length && apellido.length && telefono.length && !isNaN(telefono) && email.length > 6 && /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
             setUserInfo({
                 nombre: `${nombre} ${apellido}`,
                 telefono: telefono,
@@ -53,6 +53,7 @@ const Order = () => {
                 setError(err)
             })
         }
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userInfo])
 
     return (
@@ -64,7 +65,6 @@ const Order = () => {
                     <ul className={'listCarrito'}>
                         <CartItems />
                     </ul>
-                    <button onClick={() => clear()} className={'vaciarCarrito'}>Vaciar Carrito</button>
                     <p className={'cartTotal'}>Total: ${getTotal()}</p>
                     <Link style={{ textAlign: 'center' }} to="/"><button className={'seguirCompra'}>Seguir comprando</button></Link>
                 </>}
@@ -78,7 +78,6 @@ const Order = () => {
                 {order && <><div className={'finishOrder'}><p>Compra realizada con éxito!<p>Tu número de orden es <strong>{order}</strong></p></p></div><Link style={{ textAlign: 'center' }} to="/"><button className={'seguirCompra'}>Volver a la tienda</button></Link></>}
                 {error && <><div className={'errorOrder'}><p>Hubo un error en tu compra. Intentalo de nuevo más tarde.</p></div><Link style={{ textAlign: 'center' }} to="/"><button className={'seguirCompra'}>Volver a la tienda</button></Link></>}
             </div>
-
 
         </>
     )

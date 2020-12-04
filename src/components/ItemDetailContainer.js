@@ -12,14 +12,16 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         
         const db = getFirestore()
-        const itemCollection = db.collection('items').where('__name__', '==', id)
+        const itemCollection = db.collection('items')
+        const item = itemCollection.doc(id)
 
-        itemCollection.get().then((querySnapshot)=> {
+        item.get().then(doc=> {
             
-            if (querySnapshot.size === 0) {
+            if (!doc.exists) {
                 console.log('No results')
+                return
             }
-            setItem(querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))[0])
+            setItem({id: doc.id, ...doc.data()})
         })
        
     }, [id])
