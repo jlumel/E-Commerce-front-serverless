@@ -15,7 +15,7 @@ const Cart = () => {
                 <div className={'carritoContainer'}>
 
                     <ul className={'listCarrito'}>
-                        <CartItems />
+                        <CartItems edit={true} />
                     </ul>
                     <button onClick={() => clear()} className={'vaciarCarrito'}>Vaciar Carrito</button>
                     <p className={'cartTotal'}>Total: ${getTotal()}</p>

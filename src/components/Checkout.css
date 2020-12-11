@@ -11,11 +11,16 @@
 
 .finishOrder {
     display: flex;
+    flex-direction: column;
     width: 45vw;
     height: 8vw;
     margin: 1vw auto;
     background-color:springgreen;
     border-radius: 2vw;
+}
+
+.finishOrder div {
+    margin: auto;
 }
 
 .finishOrder p {

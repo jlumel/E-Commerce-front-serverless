@@ -3,7 +3,7 @@ import './App.css'
 import Home from './components/Home';
 import NavBar from './components/NavBar'
 import Cart from './components/Cart'
-import Order from './components/Order'
+import Checkout from './components/Checkout'
 import CartProvider from './context/cartContext'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import ItemDetailContainer from './components/ItemDetailContainer';
@@ -41,7 +41,7 @@ function App() {
             <Cart />
           </Route>
           <Route>
-            <Order exact path="/checkout"/>
+            <Checkout exact path="/checkout"/>
           </Route>
         </Switch>
       </BrowserRouter>

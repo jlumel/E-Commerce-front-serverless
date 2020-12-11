@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tienda Natural E-Commerce
 
-## Available Scripts
+Este es un E-Commerce de alimentos agroecológicos hecho integramente con ReactJS utilizando una serverless data base.
 
-In the project directory, you can run:
 
-### `npm start`
+# Librerías
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+El proyecto no utiliza librerías por fuera de [React](https://reactjs.org/) y [React-Router-DOM](https://www.npmjs.com/package/react-router-dom)
+Todo el styling esta hecho utilizando solamente css.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+# Base de Datos
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+La base de datos de la aplicación está almacenada en Firestore, servicio de [Google Firebase](https://firebase.google.com/)
+Las credenciales de acceso a Firestore están protegidas en un archivo .env.local
 
-### `npm run build`
+# Funcionalidades
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Las siguientes son las funcionalidades actualmente disponibles en la aplicación:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Navegación de productos disponibles
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+En el inicio de la aplicación se despliega una lista de todos los items disponibles en la tienda, tengan stock o no.
 
-### `npm run eject`
+## Navegación de productos por categoría
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+En la barra de navegación hay un menú en el que se pueden filtrar los productos según sus categorías.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Detalle de producto
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Haciendo click sobre un producto se navega a un detalle del producto en el que aparece una breve descripción del mismo y permite agregar la cantidad deseada al carrito de compra en el caso de haber stock suficiente. Si el stock es 0 el boton aparece deshabilitado. La cantidad que se puede agregar al carrito está limitada al stock del mismo. Una vez agregado el producto al carrito el boton y el contador desaparecen y en su lugar el usuario puede elegir entre ir al carrito para finalizar la compra o seguir navegando la tienda.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Carrito de compras
 
-## Learn More
+Al agregar un producto al carrito de compra, se hace visible un widget a la derecha en la barra de navegación que puede ser clickeado en cualquier momento para acceder al carrito. El widget indica en numeros la cantidad total de items agregados en al momento. Si se vacía el carrito el widget deja de ser visible.
+Una vez en la pantalla del carrito, el usuario puede eliminar productos, vaciar todo el carrito o finalizar la compra.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Checkout
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Al hacer click en "Finalizar Compra" se accede a la pantalla de checkout en la cual aparece la lista final de productos, ya sin la posibilidad de editarla y un formulario en el que se piden los datos del usuario para generar la orden. El formulario tiene los siguientes campos con las siguientes condiciones:
 
-### Code Splitting
+ - Nombre: Campo obligatorio
+ - Apellido: Campo obligatorio
+ - DNI: Campo obligatorio y debe ser numérico
+ - Teléfono: Campo obligatorio y debe ser numérico
+ - E-mail: Campo obligatorio y debe cumplir con el formato de email
+ - Repetir E-Mail: Campo obligatorio y debe cumplir con el formato de email
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Si se completa el formulario correctamente, el usuario debe hacer click en el boton "Comprar" el cual genera la orden en la base de datos y le provee el número de ID de la misma al usuario. Si algo falla en la generación de la orden se le muestra un mensaje al usuario que le avisa del error y le pide intentarlo nuevamente más tarde. Si la orden se genera correctamente se vacía el carrito automáticamente.
