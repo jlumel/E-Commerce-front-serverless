@@ -12,7 +12,7 @@ import ItemListContainer from './components/ItemListContainer';
 function App() {
   if (!localStorage.getItem('cart')) {
 
-    localStorage.setItem('cart', [])
+    localStorage.setItem('cart', '[]')
   }
 
   const getLocalStorage = () => {
