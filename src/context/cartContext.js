@@ -19,7 +19,7 @@ const CartProvider = ({ children, defaultCart, defaultQuantity }) => {
             setCart([...cart, { item, quantity }])
             setTotalQuantity(totalQuantity + quantity)
             setAgregado(true)
-            
+
         } else if (item.stock > 0) {
             cart.forEach(product => {
                 if (product.item.nombre === item.nombre) {
@@ -34,7 +34,7 @@ const CartProvider = ({ children, defaultCart, defaultQuantity }) => {
 
     const remove = id => {
         setCart(cart.filter(producto => producto.item.id !== id))
-        setTotalQuantity(totalQuantity - cart.find(producto=> producto.item.id === id).quantity)
+        setTotalQuantity(totalQuantity - cart.find(producto => producto.item.id === id).quantity)
     }
 
     const clear = () => {
@@ -43,12 +43,23 @@ const CartProvider = ({ children, defaultCart, defaultQuantity }) => {
     }
 
     const getTotal = () => {
-        return cart.reduce((accumulator,producto) => accumulator + producto.quantity * producto.item.precio,0)
+        return cart.reduce((accumulator, producto) => accumulator + producto.quantity * producto.item.precio, 0)
     }
 
-    useEffect(()=>{
+    const getLocalStorage = () => {
+
+        return JSON.parse(localStorage.getItem('cart')).reduce((accumulator, producto) => accumulator + producto.quantity, 0)
+
+    }
+
+    useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
-    },[cart, totalQuantity])
+
+    }, [cart, totalQuantity])
+
+    useEffect(() => {
+        setTotalQuantity(getLocalStorage())
+    }, [cart])
 
     return <CartContext.Provider value={{ cart, totalQuantity, agregado, setAgregado, add, remove, clear, getTotal }}>
 

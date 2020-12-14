@@ -10,21 +10,14 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer';
 
 function App() {
+  
   if (!localStorage.getItem('cart')) {
 
     localStorage.setItem('cart', '[]')
   }
 
-  const getLocalStorage = () => {
-    let suma = 0
-    JSON.parse(localStorage.getItem('cart')).map(item => item.quantity).forEach(item => {
-      suma += item
-    });
-      return suma
-  }
-
   return (
-    <CartProvider defaultQuantity={getLocalStorage()} defaultCart={localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []}>
+    <CartProvider defaultQuantity={0} defaultCart={localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []}>
       <BrowserRouter>
         <NavBar />
         <Switch>
@@ -41,7 +34,7 @@ function App() {
             <Cart />
           </Route>
           <Route>
-            <Checkout exact path="/checkout"/>
+            <Checkout exact path="/checkout" />
           </Route>
         </Switch>
       </BrowserRouter>
