@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import ItemList from './ItemList'
 import {useParams} from 'react-router-dom'
 import { getFirestore } from './firebase/index'
